@@ -69,15 +69,25 @@ int main(){
     cout<<s.current()<<"\n";
     s.insert(5);
     s.insert(7);
-    //s.attach(9);
+    s.attach(9);
     s.end();
     printSequence(s);
     cout<<s.current()<<"\n";
     s.attach(10);
-    
+    s.attach(12);
+    s.start();
+    s.attach(2);
+    s.start();
+    s.insert(1);
+    s.end();
+    s.insert(25);
+    s.attach(4);
     
     cout<<"performed insertion \n";
     printSequence(s);
+    sequence s2;
+    s2 = s;
+    printSequence(s2);
 
 
 

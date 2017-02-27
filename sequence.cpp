@@ -21,6 +21,7 @@ sequence::sequence(){
 }
 sequence::sequence(const sequence& source){
 	list_copy(source.head_ptr,head_ptr,tail_ptr);
+	many_nodes = source.many_nodes;
  
  
  
@@ -100,15 +101,14 @@ void sequence::insert(const value_type& entry){
 				
 		}
 		cout<<"\n end ptr is"<<tail_ptr->data()<<"\n";
+		many_nodes++;
+		cout<<current()<<" is current \n";
 
 
 }
  void sequence::attach(const value_type& entry){
  if(cursor == tail_ptr || cursor == NULL){
-		node* new_node = new node(entry, tail_ptr->link());
-		tail_ptr = new_node;
-		cursor = new_node;
-		if(tail_ptr == NULL){
+ if(tail_ptr == NULL){
 			tail_ptr = head_ptr;
 			while(tail_ptr ->link() != NULL){
 			tail_ptr = tail_ptr->link();
@@ -116,6 +116,12 @@ void sequence::insert(const value_type& entry){
 			}
 		
 		}
+ cout<<"cursor == tail \n";
+		node* new_node = new node(entry, NULL);
+		tail_ptr ->set_link(new_node);
+		cursor = new_node;
+		tail_ptr = new_node;
+		
 		
 	
 	
@@ -128,9 +134,28 @@ void sequence::insert(const value_type& entry){
 	
 	
 	}
+	
+	cout<<current()<<" is current \n";
+	
+	
+	many_nodes++;
  	
  
  
+ 
+ 
+ 
+ }
+  void sequence::operator =(const sequence& source){
+  	list_copy(source.head_ptr,head_ptr,tail_ptr);
+  	many_nodes = source.many_nodes;
+  
+  
+  
+  }
+ sequence::size_type sequence::size( ) const{
+ 	return many_nodes;
+
  
  
  
