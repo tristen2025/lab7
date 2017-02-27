@@ -143,8 +143,8 @@ namespace coen70_lab7{
     {
         //cerr << "You have not implemented list_piece." << endl;
         head_ptr= new node(start_ptr->data(),NULL);
-        node* cursor = head_ptr ->link();
-        head_ptr->set_link(cursor);
+        node* cursor = head_ptr;
+        //head_ptr->set_link(cursor);
         node* iter = start_ptr->link();
         
         while(iter != end_ptr){
@@ -158,6 +158,8 @@ namespace coen70_lab7{
         
         
         }
+        tail_ptr = cursor;
+        tail_ptr->set_link(NULL);
         
     }
 

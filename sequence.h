@@ -16,59 +16,59 @@
 //     how many items are in a sequence.
 //
 // CONSTRUCTOR for the sequence class:
-//   sequence( )
+//   sequence( ) // O(1)
 //     Postcondition: The sequence has been initialized as an empty sequence.
 //
 // DESTRUCTOR for the sequence class:
-//   ~sequence( )
+//   ~sequence( )// O(n)
 //      Postcondition: All of the nodes of the sequence have been returned (deallocated)
 //      to the heap. Note: can call Node class function clear( )
 //
 // MODIFICATION MEMBER FUNCTIONS for the sequence class:
-//   void start( )
+//   void start( )//O(1)
 //     Postcondition: The precursor and cursor are adjusted such that the first
 //     item in the sequence becomes the current item (but if the sequence is
 //     empty, then there is no current item).
 //
-//   void end( )
+//   void end( )//O(1)
 //     Postcondition: The precursor and cursor are adjusted such that the last
 //     item in the sequence becomes the current item (but if the sequence is
 //     empty, then there is no current item).
 //
-//   void advance( )
+//   void advance( )//O(1)
 //     Precondition: is_item returns true.
 //     Postcondition: If the current item was already the last item in the
 //     sequence, then there is no longer any current item. Otherwise, the new
 //     current item is the item immediately after the original current item.
 //
-//   void insert(const value_type& entry)
+//   void insert(const value_type& entry)//O(1)
 //     Postcondition: A new copy of entry has been inserted in the sequence
 //     before the current item. If there was no current item, then the new entry
 //     has been inserted at the front of the sequence. In either case, the newly
 //     inserted item is now the current item of the sequence.
 //
-//   void attach(const value_type& entry)
+//   void attach(const value_type& entry)//O(1)
 //     Postcondition: A new copy of entry has been inserted in the sequence after
 //     the current item. If there was no current item, then the new entry has
 //     been attached to the end of the sequence. In either case, the newly
 //     inserted item is now the current item of the sequence.
 //
-//   void remove_current( )
+//   void remove_current( )//O(1)
 //     Precondition: is_item returns true.
 //     Postcondition: The current item has been removed from the sequence, and
 //     the item after this (if there is one) is now the new current item.
 //
 // CONSTANT MEMBER FUNCTIONS for the sequence class:
-//   size_type size( ) const
+//   size_type size( ) const//O(1)
 //     Postcondition: The return value is the number of items in the sequence.
 //
-//   bool is_item( ) const
+//   bool is_item( ) const//O(1)
 //     Postcondition: A true return value indicates that there is a valid
 //     "current" item that may be retrieved by activating the current
 //     member function (listed below). A false return value indicates that
 //     there is no valid current item.
 //
-//   value_type current( ) const
+//   value_type current( ) const//O(1)
 //     Precondition: is_item( ) returns true.
 //     Postcondition: The item returned is the current item in the sequence.
 //
@@ -89,21 +89,21 @@ namespace coen70_lab7
         typedef double value_type;
         typedef std::size_t size_type;
         // CONSTRUCTORS and DESTRUCTOR
-        sequence( );
-        sequence(const sequence& source);
-        ~sequence( );
+        sequence( );//check
+        sequence(const sequence& source);//check
+        ~sequence( );//check
         // MODIFICATION MEMBER FUNCTIONS
-        void start( );
-        void end();
-        void advance( );
-        void insert(const value_type& entry);
-        void attach(const value_type& entry);
-        void operator =(const sequence& source);
-	    void remove_current( );
+        void start( );//check
+        void end();//check
+        void advance( );//check
+        void insert(const value_type& entry);//check
+        void attach(const value_type& entry);//check
+        void operator =(const sequence& source);//check
+	    void remove_current( );//check
         // CONSTANT MEMBER FUNCTIONS
-        size_type size( ) const;
-        bool is_item( ) const;
-        value_type current( ) const;
+        size_type size( ) const;//check
+        bool is_item( ) const;//check
+        value_type current( ) const;//check
     private:
     	node *head_ptr;
     	node *tail_ptr;
