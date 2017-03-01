@@ -142,35 +142,36 @@ namespace coen70_lab7{
     void list_piece(node* start_ptr, node* end_ptr, node*& head_ptr, node*& tail_ptr)
     {
         //cerr << "You have not implemented list_piece." << endl;
-        head_ptr= new node(start_ptr->data(),NULL);
-        node* cursor = head_ptr ->link();
-        head_ptr->set_link(cursor);
-        node* iter = start_ptr->link();
+        head_ptr= new node(start_ptr->data(),NULL);//make new head pointer 
+        node* cursor = head_ptr;//cursor is head pte
+        //head_ptr->set_link(cursor);
+        node* iter = start_ptr->link();//set cursor to the next element
         
         while(iter != end_ptr){
-            node* new_node = new node(iter->data(), NULL);
-            cursor->set_link(new_node);
+            node* new_node = new node(iter->data(), NULL);//copy over the data
+            cursor->set_link(new_node);//set the new node
             
             
             
-            cursor = cursor->link();
-            iter = iter->link();
+            cursor = cursor->link();//increment the cursor
+            iter = iter->link();//and the iterator
         
         
         }
+        tail_ptr = cursor;//set the tail pointer
+        tail_ptr->set_link(NULL);
         
     }
 
     size_t list_occurrences(node* head_ptr, const node::value_type& target)
     {
         //cerr << "You have not implemented list_occurrences." << endl;
-        node *cursor;
+        node *cursor;//mane a new node
         size_t answer = 0;
-        for (cursor = head_ptr; cursor != NULL; cursor = cursor->link( ))
-            if (target == cursor->data( ))
-                return answer++;
+        for (cursor = head_ptr; cursor != NULL; cursor = cursor->link( ))//loop through list
+            if (target == cursor->data( )) answer++;//if we find it increment answer
         
-        return answer;
+        return answer;//return the answer
         
 
         
@@ -180,12 +181,12 @@ namespace coen70_lab7{
     {
         //cerr << "You have not implemented list_insert_at." << endl;
         node *cursor = head_ptr;
-        assert(position > 0 and position <= list_length(head_ptr)+1);
-        for (size_t i = 1; (i < position) && (cursor != NULL); i++){
+        assert(position > 0 and position <= list_length(head_ptr)+1);//is it a valid position
+        for (size_t i = 1; (i < position) && (cursor != NULL); i++){//if yes loop through the list
             cursor = cursor->link( );
         }
-        node* new_node =  new node(entry,cursor->link());
-        cursor->set_link(new_node);
+        node* new_node =  new node(entry,cursor->link());//make a new node
+        cursor->set_link(new_node);//set the link of the cursor
         //cursor->set_data(entry);
         
     }
@@ -200,9 +201,9 @@ namespace coen70_lab7{
         }
         //if(position >list_length(head_ptr))return 0.0;
         node* delnode = cursor->link();
-        cursor->set_link(delnode->link());
+        cursor->set_link(delnode->link());//set the new link
         
-        delete delnode;
+        delete delnode;//delete the node
         
         
         

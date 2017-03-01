@@ -10,7 +10,7 @@
 //     constructor, an assignment operator, and a test for equality (x == y).
 //
 // CONSTRUCTOR for the node class:
-//   node(
+//   node(//O(1)
 //     const value_type& init_data = value_type(),
 //     node* init_link = NULL
 //   )
@@ -34,46 +34,46 @@
 //    list_search(p,... calls the non-const version of list_search
 //
 // MEMBER FUNCTIONS for the node class:
-//   void set_data(const value_type& new_data)
+//   void set_data(const value_type& new_data)//O(1)
 //     Postcondition: The node now contains the specified new data.
 //
-//   void set_link(node* new_link)
+//   void set_link(node* new_link)//O(1)
 //     Postcondition: The node now contains the specified new link.
 //
-//   value_type data( ) const
+//   value_type data( ) const //O(1)
 //     Postcondition: The return value is the data from this node.
 //
-//   const node* link( ) const <----- const version
+//   const node* link( ) const <----- const version //O(1)
 //   node* link( ) <----------------- non-const version
 //   See the note (above) about the const version and non-const versions:
 //     Postcondition: The return value is the link from this node.
 //
 // FUNCTIONS in the linked list toolkit:
-//   size_t list_length(const node* head_ptr)
+//   size_t list_length(const node* head_ptr) //O(1)
 //     Precondition: head_ptr is the head pointer of a linked list.
 //     Postcondition: The value returned is the number of nodes in the linked
 //     list.
 //
-//   void list_head_insert(node*& head_ptr, const node::value_type& entry)
+//   void list_head_insert(node*& head_ptr, const node::value_type& entry)//O(1)
 //     Precondition: head_ptr is the head pointer of a linked list.
 //     Postcondition: A new node containing the given entry has been added at
 //     the head of the linked list; head_ptr now points to the head of the new,
 //     longer linked list.
 //
-//   void list_insert(node* previous_ptr, const node::value_type& entry)
+//   void list_insert(node* previous_ptr, const node::value_type& entry)//O(1)
 //     Precondition: previous_ptr points to a node in a linked list.
 //     Postcondition: A new node containing the given entry has been added
 //     after the node that previous_ptr points to.
 //
 //   const node* list_search(const node* head_ptr, const node::value_type& target)
-//   node* list_search(node* head_ptr, const node::value_type& target)
+//   node* list_search(node* head_ptr, const node::value_type& target)//O(1)
 //   See the note (above) about the const version and non-const versions:
 //     Precondition: head_ptr is the head pointer of a linked list.
 //     Postcondition: The pointer returned points to the first node containing
 //     the specified target in its data member. If there is no such node, the
 //     null pointer is returned.
 //
-//   const node* list_locate(const node* head_ptr, size_t position)
+//   const node* list_locate(const node* head_ptr, size_t position)//O(n)
 //   node* list_locate(node* head_ptr, size_t position)
 //   See the note (above) about the const version and non-const versions:
 //     Precondition: head_ptr is the head pointer of a linked list, and
@@ -83,30 +83,30 @@
 //     position 2, and so on). If there is no such position, then the null
 //     pointer is returned.
 //
-//   void list_head_remove(node*& head_ptr)
+//   void list_head_remove(node*& head_ptr)//O(1)
 //     Precondition: head_ptr is the head pointer of a linked list, with at
 //     least one node.
 //     Postcondition: The head node has been removed and returned to the heap;
 //     head_ptr is now the head pointer of the new, shorter linked list.
 //
-//   void list_remove(node* previous_ptr)
+//   void list_remove(node* previous_ptr)//O(1)
 //     Precondition: previous_ptr points to a node in a linked list, and this
 //     is not the tail node of the list.
 //     Postcondition: The node after previous_ptr has been removed(and deallocated) from the
 //     linked list.
 //
-//   void list_clear(node*& head_ptr)
+//   void list_clear(node*& head_ptr)//O(n)
 //     Precondition: head_ptr is the head pointer of a linked list.
 //     Postcondition: All nodes of the list have been returned(deallocated) to the heap,
 //     and the head_ptr is now NULL.
 //
-//   void list_copy(const node* source_ptr, node*& head_ptr, node*& tail_ptr)
+//   void list_copy(const node* source_ptr, node*& head_ptr, node*& tail_ptr)//O(n)
 //     Precondition: source_ptr is the head pointer of a linked list.
 //     Postcondition: head_ptr and tail_ptr are the head and tail pointers for
 //     a new list that contains the same items as the list pointed to by
 //     source_ptr. The original list is unaltered.
 //
-//   void list_piece(
+//   void list_piece(//O(n)
 //     const node* start_ptr, const node* end_ptr,
 //     node*& head_ptr, node*& tail_ptr
 //   )
@@ -117,14 +117,14 @@
 //    end_ptr.  The end_ptr may also be NULL, in which case the new list
 //    contains elements from start_ptr to the end of the list.
 //
-//   size_t list_occurrences(node* head_ptr, const node::value_type& target)
+//   size_t list_occurrences(node* head_ptr, const node::value_type& target)//O(n)
 //     Precondition: head_ptr is the head pointer of a linked list.
 //     Postcondition: The return value is the count of the number of times
 //     target appears as the data portion of a node on the linked list.
 //     The linked list itself is unchanged.
 //
 //   void list_insert_at(Node*& head_ptr, const node::value_type& entry, size_t position)
-//     Precondition: head_ptr is the head pointer of a linked list, and
+//     Precondition: head_ptr is the head pointer of a linked list, and //O(n)
 //     position > 0 and position <= list_length(head_ptr)+1.
 //     Postcondition: A new node has been added to the linked list with entry
 //     as the data. The new node occurs at the specified position in the list.
@@ -132,7 +132,7 @@
 //     Any nodes that used to be after this specified position have been
 //     shifted to make room for the one new node.
 //
-//   node::value_type list_remove_at(node*& head_ptr, size_t position)
+//   node::value_type list_remove_at(node*& head_ptr, size_t position) //O(n)
 //     Precondition: head_ptr is the head pointer of a linked list, and
 //     position > 0 and position <= list_length(head_ptr).
 //     Postcondition: The node at the specified position has been removed from
@@ -140,7 +140,7 @@
 //     the removed node.
 //     (The head node is position 1, the next node is position 2, and so on.)
 //
-//   node* list_copy_segment(node* head_ptr, size_t start, size_t finish)
+//   node* list_copy_segment(node* head_ptr, size_t start, size_t finish)//O(n)
 //     Precondition: head_ptr is the head pointer of a linked list, and
 //     (1 <= start) and (start <= finish) and (finish <= list_length(head_ptr)).
 //     Postcondition: The value returned is the head pointer for
@@ -204,11 +204,11 @@ namespace coen70_lab7
     void list_clear(node*& head_ptr);
     void list_copy(const node* source_ptr, node*& head_ptr, node*& tail_ptr);
     // YOU NEED TO IMPLEMENT THE FOLLOWING FUNCTIONS
-    void list_piece(node* start_ptr, node* end_ptr, node*& head_ptr, node*& tail_ptr);
-    size_t list_occurrences(node* head_ptr, const node::value_type& target);
-    void list_insert_at(node*& head_ptr, const node::value_type& entry, size_t position);
-    node::value_type list_remove_at(node*& head_ptr, size_t position);
-    node* list_copy_segment(node* head_ptr, size_t start, size_t finish);
+    void list_piece(node* start_ptr, node* end_ptr, node*& head_ptr, node*& tail_ptr);//check
+    size_t list_occurrences(node* head_ptr, const node::value_type& target);//check
+    void list_insert_at(node*& head_ptr, const node::value_type& entry, size_t position);//check
+    node::value_type list_remove_at(node*& head_ptr, size_t position);//check
+    node* list_copy_segment(node* head_ptr, size_t start, size_t finish);//check
 }
 
 #endif
